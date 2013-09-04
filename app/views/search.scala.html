@@ -1,0 +1,41 @@
+@(collections : java.util.Map[String, String])
+@main("Electronic Records Index") {
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="sidebar">
+					Collections
+					<ul class="nav nav-tabs nav-stacked collection-info-sidenav affix">
+						@for(entry <- collections){
+						<li>
+							<a href="/resource/@entry._1">@entry._2</a>
+						</li>
+						}
+					</ul>
+				</div>
+			</div>
+			<div class="span8">
+				<div class="hero-unit">
+					<h1>Electronic Records Index</h1>
+					<p>The New York Public Library</br>The Manuscripts & Archives Division</p>
+					<div class="row-fluid" style="vertical-align:text-top;">
+						<div class="span12">
+							<form action="search" method="post">
+								<fieldset>
+									<input type="text" name="query" size="50"/>
+									<select name="qType">
+										<option value="full text"/>full text</option>
+										<option value="names"/>names</option>
+										<option value="orgs"/>organizations</option>
+										<option value="locs"/>locations</option>
+									</select>
+									<button type="submit" value="submit" class="btn btn-primary">Search</button>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
